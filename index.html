@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Best Friend</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #ffe6ef, #ffffff);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.95);
+        padding: 35px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 520px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 10;
+    }
+
+    h1 {
+        color: #d6336c;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #b02a5b;
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 10px;
+        transition: 0.3s;
+    }
+
+    #yesBtn {
+        background: #ff5c8a;
+        color: white;
+    }
+
+    #noBtn {
+        background: #adb5bd;
+        color: white;
+        position: absolute;
+    }
+
+    .content {
+        display: none;
+        animation: fadeIn 1.2s ease;
+        margin-top: 15px;
+    }
+
+    p {
+        color: #444;
+        font-size: 15.5px;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    .photo img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #ffb3c7;
+        margin: 15px 0;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #ff5c8a;
+        transform: rotate(45deg);
+        animation: float 8s linear infinite;
+        opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background: #ff5c8a;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    .heart::before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: -10px;
+        top: 0;
+    }
+
+    @keyframes float {
+        from { transform: translateY(100vh) rotate(45deg); }
+        to { transform: translateY(-120px) rotate(45deg); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Be my best friend?</h1>
+
+    <button id="yesBtn" onclick="showContent()">Yes</button>
+    <button id="noBtn">No</button>
+
+    <div class="content" id="content">
+        <h2>I knew you would say yes 😊</h2>
+
+        <div class="photo">
+            <!-- Replace friend.jpg with your photo file -->
+            <img src="friend.jpg" alt="Friend Photo">
+        </div>
+
+        <p>
+            Hey David Peter 🤍!!!
+            <br><br>
+            From 6th standard till today, our friendship has been a beautiful part of my life. 😏🤍
+            We’ve shared countless memories, small laughs, silly moments, and meaningful conversations
+            that I truly value. 💎🧿 And you slowly became someone I could trust without effort and
+            rely on without doubt. 🥹
+            <br><br>
+            Your honesty, trust, and steady support make this friendship special. 🧸❤
+            We’ve grown, changed, and learned so much over the years, yet our bond has stayed strong. 🙂❤️‍🩹
+            No matter how time changes or how much we fight 💀🧎‍♀️ or where life takes us,
+            the bond we share remains strong and genuine.
+            I’m grateful for every moment, every memory, and the positive energy you bring into my life.
+            That feeling of being understood without needing words is something truly rare. ♥️
+            <br><br>
+            Here’s to many more years of friendship, understanding,
+            and shared smiles and fights 🤍🫵🤌🪬
+        </p>
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 60);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    function showContent() {
+        document.getElementById("content").style.display = "block";
+        document.getElementById("yesBtn").style.display = "none";
+        noBtn.style.display = "none";
+    }
+
+    // create floating hearts
+    for (let i = 0; i < 18; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (6 + Math.random() * 4) + "s";
+        document.body.appendChild(heart);
+    }
+</script>
+
+</body>
+</html>
